@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\ObservabilitySample.Service.Application.Abstractions\ObservabilitySample.Service.Application.Abstractions.csproj" />
+    <ProjectReference Include="..\ObservabilitySample.Service.Application.Contracts\ObservabilitySample.Service.Application.Contracts.csproj" />
+    <ProjectReference Include="..\ObservabilitySample.Service.Application.Models\ObservabilitySample.Service.Application.Models.csproj" />
+  </ItemGroup>
+</Project>

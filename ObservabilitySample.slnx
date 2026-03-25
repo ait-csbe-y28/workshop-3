@@ -1,0 +1,38 @@
+<Solution>
+  <Folder Name="/common/">
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/gateway/">
+    <Project Path="src/gateway/ObservabilitySample.Gateway/ObservabilitySample.Gateway.csproj" />
+  </Folder>
+  <Folder Name="/src/gateway/Application/">
+    <Project Path="src/gateway/Application/ObservabilitySample.Gateway.Application.Abstractions/ObservabilitySample.Gateway.Application.Abstractions.csproj" />
+    <Project Path="src/gateway/Application/ObservabilitySample.Gateway.Application.Contracts/ObservabilitySample.Gateway.Application.Contracts.csproj" />
+    <Project Path="src/gateway/Application/ObservabilitySample.Gateway.Application.Dto/ObservabilitySample.Gateway.Application.Dto.csproj" />
+    <Project Path="src/gateway/Application/ObservabilitySample.Gateway.Application/ObservabilitySample.Gateway.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/gateway/Infrastructure/">
+    <Project Path="src/gateway/Infrastructure/ObservabilitySample.Gateway.Infrastructure.Service/ObservabilitySample.Gateway.Infrastructure.Service.csproj" />
+  </Folder>
+  <Folder Name="/src/gateway/Presentation/">
+    <Project Path="src/gateway/Presentation/ObservabilitySample.Gateway.Presentation.Http/ObservabilitySample.Gateway.Presentation.Http.csproj" />
+  </Folder>
+  <Folder Name="/src/service/">
+    <Project Path="src/service/ObservabilitySample.Service/ObservabilitySample.Service.csproj" />
+  </Folder>
+  <Folder Name="/src/service/Application/">
+    <Project Path="src/service/Application/ObservabilitySample.Service.Application.Abstractions/ObservabilitySample.Service.Application.Abstractions.csproj" />
+    <Project Path="src/service/Application/ObservabilitySample.Service.Application.Contracts/ObservabilitySample.Service.Application.Contracts.csproj" />
+    <Project Path="src/service/Application/ObservabilitySample.Service.Application.Models/ObservabilitySample.Service.Application.Models.csproj" />
+    <Project Path="src/service/Application/ObservabilitySample.Service.Application/ObservabilitySample.Service.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/service/Infrastructure/">
+    <Project Path="src/service/Infrastructure/ObservabilitySample.Service.Infrastructure.Persistence/ObservabilitySample.Service.Infrastructure.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/src/service/Presentation/">
+    <Project Path="src/service/Presentation/ObservabilitySample.Service.Presentation.Grpc/ObservabilitySample.Service.Presentation.Grpc.csproj" />
+  </Folder>
+</Solution>

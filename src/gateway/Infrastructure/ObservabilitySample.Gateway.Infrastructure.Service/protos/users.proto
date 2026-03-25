@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package observability_sample.service;
+
+option csharp_namespace = "ObservabilitySample.Service.Proto";
+
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+}
+
+message CreateUserRequest {
+  string login = 1;
+  string name = 2;
+}
+
+message CreateUserResponse {
+  int64 user_id = 1;
+  string login = 2;
+  string name = 3;
+}

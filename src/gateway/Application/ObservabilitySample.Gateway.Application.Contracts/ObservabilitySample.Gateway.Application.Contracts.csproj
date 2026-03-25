@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\ObservabilitySample.Gateway.Application.Dto\ObservabilitySample.Gateway.Application.Dto.csproj" />
+  </ItemGroup>
+</Project>

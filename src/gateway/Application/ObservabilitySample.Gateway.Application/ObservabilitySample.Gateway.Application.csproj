@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\ObservabilitySample.Gateway.Application.Abstractions\ObservabilitySample.Gateway.Application.Abstractions.csproj" />
+    <ProjectReference Include="..\ObservabilitySample.Gateway.Application.Contracts\ObservabilitySample.Gateway.Application.Contracts.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+  </ItemGroup>
+</Project>

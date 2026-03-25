@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package observability_sample.service;
+
+option csharp_namespace = "ObservabilitySample.Service.Proto";
+
+import "google/protobuf/wrappers.proto";
+
+service PostsService {
+  rpc CreatePost(CreatePostRequest) returns (CreatePostResponse);
+  rpc QueryPosts(QueryPostsRequest) returns (QueryPostsResponse);
+}
+
+message CreatePostRequest {
+  int64 user_id = 1;
+  string title = 2;
+  string body = 3;
+}
+
+message CreatePostResponse {
+  int64 post_id = 1;
+}
+
+message QueryPostsRequest {
+  google.protobuf.StringValue page_token = 1;
+  int32 page_size = 2;
+
+  repeated int64 user_ids = 3;
+}
+
+message QueryPostsResponse {
+  google.protobuf.StringValue page_token = 1;
+  repeated Post posts = 2;
+
+  message Post {
+    int64 id = 1;
+    int64 user_id = 2;
+    string title = 3;
+    string body = 4;
+  }
+}

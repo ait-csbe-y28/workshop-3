@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\ObservabilitySample.Service.Application.Models\ObservabilitySample.Service.Application.Models.csproj" />
+  </ItemGroup>
+</Project>
