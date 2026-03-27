@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\ObservabilitySample.ServiceDefaults\ObservabilitySample.ServiceDefaults.csproj" />
       <ProjectReference Include="..\Application\ObservabilitySample.Gateway.Application\ObservabilitySample.Gateway.Application.csproj" />
       <ProjectReference Include="..\Infrastructure\ObservabilitySample.Gateway.Infrastructure.Service\ObservabilitySample.Gateway.Infrastructure.Service.csproj" />
       <ProjectReference Include="..\Presentation\ObservabilitySample.Gateway.Presentation.Http\ObservabilitySample.Gateway.Presentation.Http.csproj" />
@@ -20,7 +21,16 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+      <PackageReference Include="Microsoft.Extensions.Caching.Hybrid" />
+      <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" />
       <PackageReference Include="Scalar.AspNetCore" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Serilog.AspNetCore" />
+        <PackageReference Include="Serilog.Enrichers.ActivityTags" />
+        <PackageReference Include="Serilog.Enrichers.Span" />
+        <PackageReference Include="Serilog.Sinks.OpenTelemetry" />
     </ItemGroup>
 
 </Project>

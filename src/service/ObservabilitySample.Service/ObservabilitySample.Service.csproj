@@ -7,9 +7,20 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\ObservabilitySample.ServiceDefaults\ObservabilitySample.ServiceDefaults.csproj" />
       <ProjectReference Include="..\Application\ObservabilitySample.Service.Application\ObservabilitySample.Service.Application.csproj" />
       <ProjectReference Include="..\Infrastructure\ObservabilitySample.Service.Infrastructure.Persistence\ObservabilitySample.Service.Infrastructure.Persistence.csproj" />
       <ProjectReference Include="..\Presentation\ObservabilitySample.Service.Presentation.Grpc\ObservabilitySample.Service.Presentation.Grpc.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Npgsql.OpenTelemetry" />
+      <PackageReference Include="Prometheus.Client.AspNetCore" />
+      <PackageReference Include="Prometheus.Client.DependencyInjection" />
+      <PackageReference Include="Serilog.AspNetCore" />
+      <PackageReference Include="Serilog.Enrichers.ActivityTags" />
+      <PackageReference Include="Serilog.Enrichers.Span" />
+      <PackageReference Include="Serilog.Sinks.OpenTelemetry" />
     </ItemGroup>
 
 </Project>

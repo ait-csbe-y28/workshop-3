@@ -45,10 +45,17 @@ internal sealed class PostService : IPostService
     {
         var cacheKey = $"{request.PageSize}:{string.Join("|", request.UserIds)}";
 
+        var options = new HybridCacheEntryOptions
+        {
+            Expiration = TimeSpan.FromSeconds(10),
+            LocalCacheExpiration = TimeSpan.FromSeconds(5),
+        };
+
         return await _cache.GetOrCreateAsync(
             cacheKey,
             (request, service: this),
             static async (state, ct) => await state.service.GetDirectPostsAsync(state.request, ct),
+            options: options,
             cancellationToken: cancellationToken);
     }
 }

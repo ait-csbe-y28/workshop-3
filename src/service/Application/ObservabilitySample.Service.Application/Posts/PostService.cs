@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+using ObservabilitySample.Service.Application.Abstractions.Metrics;
 using ObservabilitySample.Service.Application.Abstractions.Persistence;
 using ObservabilitySample.Service.Application.Abstractions.Persistence.Queries;
 using ObservabilitySample.Service.Application.Contracts.Posts;
@@ -10,10 +12,14 @@ namespace ObservabilitySample.Service.Application.Posts;
 internal sealed class PostService : IPostService
 {
     private readonly IPersistenceContext _context;
+    private readonly ILogger<PostService> _logger;
+    private readonly IServiceMetrics _metrics;
 
-    public PostService(IPersistenceContext context)
+    public PostService(IPersistenceContext context, ILogger<PostService> logger, IServiceMetrics metrics)
     {
         _context = context;
+        _logger = logger;
+        _metrics = metrics;
     }
 
     public async Task<CreatePost.Response> CreatePostAsync(
@@ -34,6 +40,13 @@ internal sealed class PostService : IPostService
 
         post = await _context.Posts.AddAsync(post, cancellationToken);
 
+        _logger.LogInformation(
+            "Created post '{Title}' with id = '{PostId}'",
+            post.Title,
+            post.Id);
+        
+        _metrics.IncPostCreated();
+
         return new CreatePost.Response.Success(post);
     }
 
@@ -53,6 +66,8 @@ internal sealed class PostService : IPostService
         QueryPosts.PageTokenModel? pageToken = posts.Length < request.PageSize
             ? null
             : new QueryPosts.PageTokenModel(posts[^1].Id);
+
+        _metrics.IncPostsViewed(posts.Length);
 
         return new QueryPosts.Response(pageToken, posts);
     }

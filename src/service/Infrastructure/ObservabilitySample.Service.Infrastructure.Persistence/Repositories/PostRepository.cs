@@ -30,7 +30,7 @@ public sealed class PostRepository : IPostRepository
         FROM posts
         WHERE 
             (:cursor_post_id is null OR post_id > :cursor_post_id)
-            AND (cardinality(:user_id) = 0 OR user_id = ANY(:user_ids))
+            AND (cardinality(:user_ids) = 0 OR user_id = ANY(:user_ids))
         LIMIT :page_size;
         """;
 

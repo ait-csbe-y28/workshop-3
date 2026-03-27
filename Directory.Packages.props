@@ -3,6 +3,8 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="13.2.0" />
+    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.2.0" />
     <PackageVersion Include="Grpc.AspNetCore" Version="2.76.0" />
     <PackageVersion Include="Grpc.AspNetCore.Server.Reflection" Version="2.76.0" />
     <PackageVersion Include="Grpc.Tools" Version="2.78.0" />
@@ -10,9 +12,30 @@
     <PackageVersion Include="Itmo.Dev.Platform.MessagePersistence.Postgres" Version="3.0.364" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="10.0.5" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.Hybrid" Version="10.4.0" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.5" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.5" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.5" />
+    <PackageVersion Include="Npgsql.OpenTelemetry" Version="10.0.2" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.15.0-beta.1" />
+    <PackageVersion Include="prometheus-net.AspNetCore" Version="8.2.1" />
+    <PackageVersion Include="Prometheus.Client.Abstractions" Version="6.3.0" />
+    <PackageVersion Include="Prometheus.Client.AspNetCore" Version="6.0.0" />
+    <PackageVersion Include="Prometheus.Client.DependencyInjection" Version="1.6.0" />
+    <PackageVersion Include="Raccoon.Extensions.OpenTelemetry.Npgsql" Version="1.2.0" />
     <PackageVersion Include="Scalar.AspNetCore" Version="2.13.15" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageVersion Include="Serilog.Enrichers.ActivityTags" Version="0.2.0" />
+    <PackageVersion Include="Serilog.Enrichers.Span" Version="3.1.0" />
+    <PackageVersion Include="Serilog.Sinks.OpenTelemetry" Version="4.2.0" />
     <PackageVersion Include="SourceKit.Generators.Builder" Version="1.2.54" />
     <PackageVersion Include="SourceKit.Generators.Grpc" Version="1.0.54" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.2.0" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="10.2.0" />
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.15.0" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.15.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.15.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.15.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.15.0" />
   </ItemGroup>
 </Project>

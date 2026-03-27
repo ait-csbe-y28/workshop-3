@@ -4,7 +4,10 @@
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
   </Folder>
-  <Folder Name="/src/" />
+  <Folder Name="/src/">
+    <Project Path="src/ObservabilitySample.ServiceDefaults/ObservabilitySample.ServiceDefaults.csproj" />
+    <Project Path="src/ObservabilitySample/ObservabilitySample.csproj" />
+  </Folder>
   <Folder Name="/src/gateway/">
     <Project Path="src/gateway/ObservabilitySample.Gateway/ObservabilitySample.Gateway.csproj" />
   </Folder>

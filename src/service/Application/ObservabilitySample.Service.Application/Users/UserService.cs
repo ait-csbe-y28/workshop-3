@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using ObservabilitySample.Service.Application.Abstractions.Metrics;
 using ObservabilitySample.Service.Application.Abstractions.Persistence;
 using ObservabilitySample.Service.Application.Abstractions.Persistence.Results;
 using ObservabilitySample.Service.Application.Contracts.Users;
@@ -10,10 +12,14 @@ namespace ObservabilitySample.Service.Application.Users;
 internal sealed class UserService : IUserService
 {
     private readonly IPersistenceContext _context;
+    private readonly ILogger<UserService> _logger;
+    private readonly IServiceMetrics _metrics;
 
-    public UserService(IPersistenceContext context)
+    public UserService(IPersistenceContext context, ILogger<UserService> logger, IServiceMetrics metrics)
     {
         _context = context;
+        _logger = logger;
+        _metrics = metrics;
     }
 
     public async Task<CreateUser.Response> CreateUserAsync(
@@ -26,12 +32,27 @@ internal sealed class UserService : IUserService
             user,
             cancellationToken);
 
-        return result switch
+        if (result is AddUserResult.Success success)
         {
-            AddUserResult.Success success => new CreateUser.Response.Success(success.User),
-            AddUserResult.LoginConflict => new CreateUser.Response.LoginConflict(),
+            _logger.LogInformation(
+                "Successfully created user = '{Login}', with id = '{UserId}'",
+                success.User.Login,
+                success.User.Id);
+            
+            _metrics.IncUserCreated();
 
-            _ => throw new UnreachableException(),
-        };
+            return new CreateUser.Response.Success(success.User);
+        }
+
+        if (result is AddUserResult.LoginConflict)
+        {
+            _logger.LogInformation(
+                "Failed to create user with login = '{Login}' due to login conflict",
+                user.Login);
+
+            return new CreateUser.Response.LoginConflict();
+        }
+
+        throw new UnreachableException();
     }
 }

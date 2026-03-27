@@ -1,7 +1,9 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ObservabilitySample.Gateway.Application.Contracts.Posts;
 using ObservabilitySample.Gateway.Application.Contracts.Posts.Operations;
 using ObservabilitySample.Gateway.Application.Dto.Posts;
+using ObservabilitySample.Gateway.Presentation.Http.Extensions;
 using ObservabilitySample.Gateway.Presentation.Http.Models.Posts;
 
 namespace ObservabilitySample.Gateway.Presentation.Http.Controllers;
@@ -22,6 +24,8 @@ public sealed class PostController : ControllerBase
         [FromBody] CreatePostRequest request,
         CancellationToken cancellationToken)
     {
+        Activity.Current.AddUserIdBaggage(request.UserId);
+        
         PostDto post = await _postService.CreatePostAsync(
             request.UserId,
             request.Title,
