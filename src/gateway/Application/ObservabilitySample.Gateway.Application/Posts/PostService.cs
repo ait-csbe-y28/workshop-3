@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.Extensions.Caching.Hybrid;
 using ObservabilitySample.Gateway.Application.Abstractions.Posts;
 using ObservabilitySample.Gateway.Application.Contracts.Posts;
@@ -51,10 +52,25 @@ internal sealed class PostService : IPostService
             LocalCacheExpiration = TimeSpan.FromSeconds(5),
         };
 
+        Activity? activity = Activity.Current;
+
         return await _cache.GetOrCreateAsync(
             cacheKey,
-            (request, service: this),
-            static async (state, ct) => await state.service.GetDirectPostsAsync(state.request, ct),
+            (request, service: this, activity),
+            static async (state, ct) =>
+            {
+                Activity? previousActivity = Activity.Current;
+                Activity.Current = state.activity;
+
+                try
+                {
+                    return await state.service.GetDirectPostsAsync(state.request, ct);
+                }
+                finally
+                {
+                    Activity.Current = previousActivity;
+                }
+            },
             options: options,
             cancellationToken: cancellationToken);
     }
