@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using OpenTelemetry;
 
-namespace Microsoft.Extensions.Hosting;
+namespace ObservabilitySample.ServiceDefaults.Processors;
 
 public sealed class BaggageToTagsProcessor : BaseProcessor<Activity>
 {

@@ -7,6 +7,7 @@ using ObservabilitySample.Service.Infrastructure.Persistence;
 using ObservabilitySample.Service.Metrics;
 using ObservabilitySample.Service.Presentation.Grpc;
 using OpenTelemetry.Metrics;
+using OpenTelemetry.Trace;
 using Prometheus.Client.AspNetCore;
 using Prometheus.Client.DependencyInjection;
 using Serilog;
@@ -39,7 +40,8 @@ builder.Services
         .AddMeter(DiagnosticsServiceMetrics.Meter.Name)
         .AddNpgsqlInstrumentation())
     .WithTracing(tracing => tracing
-        .AddNpgsql());
+        .AddNpgsql()
+        .AddProcessor(new PostgresTraceSuppressor()));
 
 builder.AddServiceDefaults();
 

@@ -25,7 +25,7 @@ IResourceBuilder<ProjectResource> service = builder.AddProject<Projects.Observab
     .WithEnvironment(
         "Infrastructure:Persistence:Postgres:Password",
         postgres.Resource.PasswordParameter)
-    .WithEnvironment("USE_PROMETHEUS_METRICS", "true")
+    .WithEnvironment("USE_PROMETHEUS_METRICS", "false")
     .WithHttpHealthCheck("/health");
 
 IResourceBuilder<ProjectResource> gateway = builder.AddProject<Projects.ObservabilitySample_Gateway>("gateway")

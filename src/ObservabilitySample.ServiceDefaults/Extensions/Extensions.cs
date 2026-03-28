@@ -1,7 +1,9 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using ObservabilitySample.ServiceDefaults.Processors;
 using OpenTelemetry;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -53,7 +55,7 @@ public static class Extensions
                     .AddHttpClientInstrumentation()
                     .AddRuntimeInstrumentation();
             });
-        
+
         builder.Services
             .AddOpenTelemetry()
             .WithTracing(tracing =>
@@ -62,7 +64,12 @@ public static class Extensions
                     .AddSource(builder.Environment.ApplicationName)
                     // Add custom processor to move baggage to tags
                     .AddProcessor(new BaggageToTagsProcessor())
-                    .AddAspNetCoreInstrumentation()
+                    .AddProcessor(new OpenTelemetryTraceSuppressor())
+                    .AddAspNetCoreInstrumentation(options =>
+                        options.Filter = context =>
+                            !context.Request.Path.StartsWithSegments(HealthEndpointPath)
+                            && !context.Request.Path.StartsWithSegments(AlivenessEndpointPath)
+                    )
                     .AddGrpcClientInstrumentation()
                     .AddHttpClientInstrumentation();
             });
