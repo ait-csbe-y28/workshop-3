@@ -38,4 +38,8 @@
   <Folder Name="/src/service/Presentation/">
     <Project Path="src/service/Presentation/ObservabilitySample.Service.Presentation.Grpc/ObservabilitySample.Service.Presentation.Grpc.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/IntegrationalTests/IntegrationalTests.csproj" />
+    <Project Path="tests/UnitTests/UnitTests.csproj" />
+  </Folder>
 </Solution>

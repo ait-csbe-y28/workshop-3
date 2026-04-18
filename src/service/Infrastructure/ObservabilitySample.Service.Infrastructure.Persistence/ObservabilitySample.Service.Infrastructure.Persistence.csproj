@@ -5,4 +5,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Application\ObservabilitySample.Service.Application.Abstractions\ObservabilitySample.Service.Application.Abstractions.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="IntegrationalTests"/>
+  </ItemGroup>
 </Project>
